@@ -6,6 +6,7 @@ class AssignsController < ApplicationController
   def create
     team = find_team(params[:team_id])
     user = email_reliable?(assign_params) ? User.find_or_create_by_email(assign_params) : nil
+    AssignMailer.assign_mail(user.email).deliver
     if user
       team.invite_member(user)
       redirect_to team_url(team), notice: I18n.t('views.messages.assigned')
