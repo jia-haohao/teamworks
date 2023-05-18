@@ -15,4 +15,18 @@ class Team < ApplicationRecord
   def invite_member(user)
     assigns.create(user: user)
   end
+
+  def edit_action
+    # if owner_id == true
+    #   redirect_to edit_team_path(owner_id)
+    # else
+    #   redirect_to team_path(team), notice: "リーダー以外人は編集できません!"
+    # end
+  end
+
+  # def destroy_action
+  #   if current_user.team == true || owner_id == true 
+  #     # redirect_to team_assign_path(@team, assign), method: :delete,
+  #   end
+  # end
 end
