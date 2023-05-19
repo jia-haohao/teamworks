@@ -16,6 +16,9 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    unless current_user.id == @team.owner_id
+      redirect_to team_path(@team), notice: "リーダー以外人は編集できません!"
+    end
   end
 
   def create
