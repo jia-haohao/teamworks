@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # before_action :set_user, only: [:show, :edit, :update]
+
   def edit
     @user = current_user
   end
@@ -8,7 +10,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path, notice: I18n.t('views.messages.update_profile')
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -17,6 +19,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  # def set_user
+  #   @user = User.find(params[:id])
+  # end
 
   def user_params
     params.require(:user).permit(:email, :icon, :keep_team_id)
