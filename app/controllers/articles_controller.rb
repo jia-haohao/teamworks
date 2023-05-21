@@ -30,7 +30,8 @@ class ArticlesController < ApplicationController
     article.user = current_user
     article.team_id = agenda.team_id
     if article.save
-      redirect_to article_url(article), notice: I18n.t('views.messages.create_article')
+      # redirect_to article_url(article), notice: I18n.t('views.messages.create_article')
+      redirect_to dashboard_url
     else
       render :new
     end
